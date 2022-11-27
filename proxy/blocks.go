@@ -9,8 +9,8 @@ import (
 
 	"github.com/alexdevranger/node-1.8.27/common"
 
-	"github.com/sammy007/open-ethereum-pool/rpc"
-	"github.com/sammy007/open-ethereum-pool/util"
+	"github.com/alexdevranger/open-pool/rpc"
+	"github.com/alexdevranger/open-pool/util"
 )
 
 const maxBacklog = 3

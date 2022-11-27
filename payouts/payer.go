@@ -10,9 +10,9 @@ import (
 
 	"github.com/alexdevranger/node-1.8.27/common/hexutil"
 
-	"github.com/sammy007/open-ethereum-pool/rpc"
-	"github.com/sammy007/open-ethereum-pool/storage"
-	"github.com/sammy007/open-ethereum-pool/util"
+	"github.com/alexdevranger/open-pool/rpc"
+	"github.com/alexdevranger/open-pool/storage"
+	"github.com/alexdevranger/open-pool/util"
 )
 
 const txCheckInterval = 5 * time.Second
