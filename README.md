@@ -38,14 +38,14 @@ Clone & compile:
 
     git config --global http.https://gopkg.in.followRedirects true
     git clone https://github.com/alexdevranger/open-pool.git
-    cd open-ethereum-pool
+    cd open-pool
     make
 
 Install redis-server.
 
 ### Running Pool
 
-    ./build/bin/open-ethereum-pool config.json
+    ./build/bin/open-pool config.json
 
 You can use Ubuntu upstart - check for sample config in <code>upstart.conf</code>.
 

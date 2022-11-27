@@ -10,25 +10,25 @@ Module will fetch accounts and sequentially process payouts.
 
 For every account who reached minimal threshold:
 
-* Check if we have enough peers on a node
-* Check that account is unlocked
+- Check if we have enough peers on a node
+- Check that account is unlocked
 
 If any of checks fails, module will not even try to continue.
 
-* Check if we have enough money for payout (should not happen under normal circumstances)
-* Lock payments
+- Check if we have enough money for payout (should not happen under normal circumstances)
+- Lock payments
 
 If payments can't be locked (another lock exist, usually after a failure) module will halt payouts.
 
-* Deduct balance of a miner and log pending payment
-* Submit a transaction to a node via `eth_sendTransaction`
+- Deduct balance of a miner and log pending payment
+- Submit a transaction to a node via `eth_sendTransaction`
 
 **If transaction submission fails, payouts will remain locked and halted in erroneous state.**
 
 If transaction submission was successful, we have a TX hash:
 
-* Write this TX hash to a database
-* Unlock payouts
+- Write this TX hash to a database
+- Unlock payouts
 
 And so on. Repeat for every account.
 
@@ -38,7 +38,7 @@ After payout session, payment module will perform `BGSAVE` (background saving) o
 
 If your payout is not logged and not confirmed by Ethereum network you can resolve it automatically. You need to payouts in maintenance mode by setting up `RESOLVE_PAYOUT=1` or `RESOLVE_PAYOUT=True` environment variable:
 
-`RESOLVE_PAYOUT=1 ./build/bin/open-ethereum-pool payouts.json`.
+`RESOLVE_PAYOUT=1 ./build/bin/open-pool payouts.json`.
 
 Payout module will fetch all rows from Redis with key `eth:payments:pending` and credit balance back to miners. Usually you will have only single entry there.
 
@@ -80,11 +80,11 @@ ZREVRANGE "eth:payments:pending" 0 -1 WITHSCORES
 
 Result will be like this:
 
-> 1) "0xb85150eb365e7df0941f0cf08235f987ba91506a:25000000"
+> 1. "0xb85150eb365e7df0941f0cf08235f987ba91506a:25000000"
 
 It's a pair of `LOGIN:AMOUNT`.
 
->2) "1462920526"
+> 2.  "1462920526"
 
 It's a `UNIXTIME`
 
@@ -95,9 +95,9 @@ It's a `UNIXTIME`
 ```javascript
 eth.sendTransaction({
   from: eth.coinbase,
-  to: '0xb85150eb365e7df0941f0cf08235f987ba91506a',
-  value: web3.toWei(25000000, 'shannon')
-})
+  to: "0xb85150eb365e7df0941f0cf08235f987ba91506a",
+  value: web3.toWei(25000000, "shannon"),
+});
 
 // => 0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331
 ```
