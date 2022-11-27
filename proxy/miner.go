@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ethereum/ethash"
+	"github.com/alexdevranger/ethash"
 	"github.com/alexdevranger/node-1.8.27/common"
 )
 
