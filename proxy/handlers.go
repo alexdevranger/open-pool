@@ -62,6 +62,15 @@ func (s *ProxyServer) handleSubmitRPC(cs *Session, login, id string, params []st
 		log.Printf("Malformed params from %s@%s %v", login, cs.ip, params)
 		return false, &ErrorReply{Code: -1, Message: "Invalid params"}
 	}
+	// TEST: PREPEND 0x for NiceHash submissions
+
+	// for i := 0; i <= 2; i++ {
+	// 	if params[i][0:2] != "0x" {
+	// 		params[i] = "0x" + params[i]
+	// 	}
+
+	// 	//log.Printf("handleSubmitRPC, params[%d] = %s", i, params[i])
+	// }
 
 	if !noncePattern.MatchString(params[0]) || !hashPattern.MatchString(params[1]) || !hashPattern.MatchString(params[2]) {
 		s.policy.ApplyMalformedPolicy(cs.ip)
