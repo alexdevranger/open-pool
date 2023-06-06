@@ -51,8 +51,8 @@ type Session struct {
 	conn  *net.TCPConn
 	login string
 	subscriptionID string
-	Extranonce         string
-	JobDetails jobDetails
+	Extranonce string
+	JobDeatils jobDetails
 }
 
 func NewProxy(cfg *Config, backend *storage.RedisClient) *ProxyServer {

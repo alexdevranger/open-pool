@@ -8,6 +8,12 @@ type JSONRpcReq struct {
 	Params json.RawMessage `json:"params"`
 }
 
+type JSONRpcReqNH struct  {
+	Method string           `json:"method"`
+	Params interface{} `json:"params"`
+	Id     interface{} `json:"id"`
+}
+
 type StratumReq struct {
 	JSONRpcReq
 	Worker string `json:"worker"`

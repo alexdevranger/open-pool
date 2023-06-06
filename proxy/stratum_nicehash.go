@@ -8,7 +8,6 @@ import (
 	"log"
 	"net"
 	"time"
-	"strconv"
 
 	"github.com/alexdevranger/open-pool/util"
 	"math/rand"
@@ -47,7 +46,7 @@ func (s *ProxyServer) ListenNiceHashTCP() {
 			continue
 		}
 		n += 1
-		cs := &Session{conn: conn, ip: ip}
+		cs := &Session{conn: conn, ip: ip }
 
 		accept <- n
 		go func(cs *Session) {
