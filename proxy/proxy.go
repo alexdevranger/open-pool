@@ -34,6 +34,7 @@ type ProxyServer struct {
 	sessionsMu sync.RWMutex
 	sessions   map[*Session]struct{}
 	timeout    time.Duration
+	Extranonce string
 }
 
 type jobDetails struct {
@@ -51,7 +52,6 @@ type Session struct {
 	conn  *net.TCPConn
 	login string
 	subscriptionID string
-	Extranonce string
 	JobDeatils jobDetails
 }
 
